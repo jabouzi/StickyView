@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+//    var mapView: MapView!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.estimatedSectionHeaderHeight = 40.0
         self.automaticallyAdjustsScrollViewInsets = false
         // Set a header for the table view
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 600))
+        let header = MapView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 600))
         header.backgroundColor = .red
         tableView.tableHeaderView = header
     }
@@ -32,16 +33,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.backgroundColor = .white
-//        let segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30))
+        let label = UILabel(frame: CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30))
 //        segmentedControl.insertSegment(withTitle: "One", at: 0, animated: false)
 //        segmentedControl.insertSegment(withTitle: "Two", at: 1, animated: false)
 //        segmentedControl.insertSegment(withTitle: "Three", at: 2, animated: false)
-//        v.addSubview(segmentedControl)
+        label.text = "SELECT ROUTE"
+        label.textAlignment = .center
+        v.addSubview(label)
         return v
     }
     //MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 100
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "CellID")

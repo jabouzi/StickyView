@@ -14,6 +14,8 @@
 		C4760C511D8986620050ED6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4760C4F1D8986620050ED6E /* LaunchScreen.storyboard */; };
 		C4760C5C1D8986640050ED6E /* StickyViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4760C5B1D8986640050ED6E /* StickyViewTests.swift */; };
 		C4760C671D8986650050ED6E /* StickyViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4760C661D8986650050ED6E /* StickyViewUITests.swift */; };
+		ED1960AE2039967A00DB9889 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1960AD2039967A00DB9889 /* MyView.swift */; };
+		ED1960B02039A18300DB9889 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1960AF2039A18300DB9889 /* Button.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C4760C621D8986650050ED6E /* StickyViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StickyViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4760C661D8986650050ED6E /* StickyViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyViewUITests.swift; sourceTree = "<group>"; };
 		C4760C681D8986650050ED6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED1960AD2039967A00DB9889 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		ED1960AF2039A18300DB9889 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,10 @@
 		C4760C451D8986620050ED6E /* StickyView */ = {
 			isa = PBXGroup;
 			children = (
-				C4760C461D8986620050ED6E /* AppDelegate.swift */,
-				C4760C481D8986620050ED6E /* ViewController.swift */,
-				C4760C4A1D8986620050ED6E /* Main.storyboard */,
 				C4760C4D1D8986620050ED6E /* Assets.xcassets */,
 				C4760C4F1D8986620050ED6E /* LaunchScreen.storyboard */,
-				C4760C521D8986620050ED6E /* Info.plist */,
+				C4760C461D8986620050ED6E /* AppDelegate.swift */,
+				ED1960C2203B27E200DB9889 /* StickyView */,
 			);
 			path = StickyView;
 			sourceTree = "<group>";
@@ -123,6 +125,18 @@
 				C4760C681D8986650050ED6E /* Info.plist */,
 			);
 			path = StickyViewUITests;
+			sourceTree = "<group>";
+		};
+		ED1960C2203B27E200DB9889 /* StickyView */ = {
+			isa = PBXGroup;
+			children = (
+				C4760C481D8986620050ED6E /* ViewController.swift */,
+				C4760C4A1D8986620050ED6E /* Main.storyboard */,
+				C4760C521D8986620050ED6E /* Info.plist */,
+				ED1960AD2039967A00DB9889 /* MyView.swift */,
+				ED1960AF2039A18300DB9889 /* Button.swift */,
+			);
+			path = StickyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1960AE2039967A00DB9889 /* MyView.swift in Sources */,
 				C4760C491D8986620050ED6E /* ViewController.swift in Sources */,
 				C4760C471D8986620050ED6E /* AppDelegate.swift in Sources */,
+				ED1960B02039A18300DB9889 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +431,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2Q3M5SLHJL;
-				INFOPLIST_FILE = StickyView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StickyView/StickyView/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skanderjabouzi.StickyView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -428,7 +445,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2Q3M5SLHJL;
-				INFOPLIST_FILE = StickyView/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/StickyView/StickyView/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skanderjabouzi.StickyView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
