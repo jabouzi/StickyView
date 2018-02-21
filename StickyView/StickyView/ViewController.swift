@@ -7,26 +7,40 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-//    var mapView: MapView!
+    var mapView: MapView!
+    var routes: [MKRoute] = [MKRoute]()
+    
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView = MapView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: self.view.frame.height - 120))
+//        header.backgroundColor = .red
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedSectionHeaderHeight = 40.0
         self.automaticallyAdjustsScrollViewInsets = false
-        // Set a header for the table view
-        let header = MapView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 600))
-        header.backgroundColor = .red
-        tableView.tableHeaderView = header
+        tableView.tableHeaderView = mapView
+        getRoutes()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getRoutes() {
+        mapView.setDirection(completion: { success, result, error in
+            if let error = error {
+                print("Failed with \(error)")
+            } else {
+                self.routes = result
+                self.tableView.reloadData()
+            }
+        })
     }
 
     //MARK: UITableViewDelegate
@@ -44,12 +58,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     //MARK: UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return self.routes.count + 2
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "CellID")
-        cell.textLabel?.text = "\(indexPath.row)"
+        if indexPath.row < self.routes.count {
+            cell.textLabel?.text = "\(mapView.routes[indexPath.row].name) \(mapView.routes[indexPath.row].distance) \(mapView.routes[indexPath.row].expectedTravelTime)"
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        self.mapView.addRoute(routeIndex: indexPath.row)
     }
 }
 
